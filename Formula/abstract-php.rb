@@ -9,16 +9,6 @@ def build_intl?
 end
 
 class AbstractPhp < Formula
-  def initialize name='__UNKNOWN__', path=nil
-    begin
-      raise "One does not simply install an AbstractPhp formula" if name == "abstract-php"
-      super
-    rescue Exception => e
-      # Hack so that we pass all brew doctor tests
-      reraise = e.backtrace.select { |l| l.match(/(doctor|cleanup|leaves|uses)\.rb/) }
-      raise e if reraise.empty?
-    end
-  end
 
   def self.init
     homepage 'http://php.net'
@@ -39,7 +29,7 @@ class AbstractPhp < Formula
     depends_on 'openssl' if build.include? 'with-homebrew-openssl'
     depends_on 'tidy' => :optional
     depends_on 'unixodbc' => :optional
-    depends_on 'homebrew/dupes/zlib'
+    depends_on 'zlib'
 
     # Sanity Checks
     if build.include? 'with-pgsql'
@@ -304,7 +294,7 @@ INFO
     # Bug in PHP 5.x causes build to fail on OSX 10.5 Leopard due to
     # outdated system libraries being first on library search path:
     # https://bugs.php.net/bug.php?id=44294
-    "https://raw.github.com/gist/4222668/923819a243f3b6fefb79471671dbc8baff6e72b7/Makefile.global.diff"
+    "https://gist.githubusercontent.com/ablyler/6579338/raw/5713096862e271ca78e733b95e0235d80fed671a/Makefile.global.diff"
   end
 
   def _install
