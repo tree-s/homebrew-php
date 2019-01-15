@@ -294,7 +294,7 @@ INFO
     # Bug in PHP 5.x causes build to fail on OSX 10.5 Leopard due to
     # outdated system libraries being first on library search path:
     # https://bugs.php.net/bug.php?id=44294
-    "https://gist.githubusercontent.com/ablyler/6579338/raw/5713096862e271ca78e733b95e0235d80fed671a/Makefile.global.diff"
+    "https://gist.githubusercontent.com/tree-s/e72b83b946284b807426a1542efec863/raw/91af09e1db6463bc8725050dce1d833b13e10a24/Makefile.global.diff"
   end
 
   def _install
